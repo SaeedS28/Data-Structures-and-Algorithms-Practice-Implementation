@@ -62,6 +62,10 @@ public class DoubleLinkedList<E> implements LinkedListInterface<E> {
 		return 0;
 	}
 
+	private void checkBounds(int index) {
+		if (index<0 || index >this.length()-1)
+			throw new IndexOutOfBoundsException("Index out of bounds!");
+	}
 	
 	private static class Node<E>{
 		private Node<E> previous;
