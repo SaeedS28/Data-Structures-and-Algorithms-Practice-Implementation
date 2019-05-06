@@ -14,49 +14,39 @@ public class DoubleLinkedList<E> implements LinkedListInterface<E> {
 		this.header.setNext(trailer);
 	}
 	
-	@Override
 	public int length() {
-		// TODO Auto-generated method stub
 		return this.size;
 	}
 
-	@Override
-	public E get() {
-		// TODO Auto-generated method stub
+	public E getValue(int index) {
 		return null;
 	}
 
-	@Override
 	public void set(int index, E element) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void addFirst(E element) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void addLast(E element) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void addBetween(int index, E element) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public E remove(int index) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public int indexOf(E element) {
 		// TODO Auto-generated method stub
 		return 0;
@@ -66,6 +56,7 @@ public class DoubleLinkedList<E> implements LinkedListInterface<E> {
 		if (index<0 || index >this.length()-1)
 			throw new IndexOutOfBoundsException("Index out of bounds!");
 	}
+	
 	
 	private static class Node<E>{
 		private Node<E> previous;
