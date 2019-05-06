@@ -7,7 +7,7 @@ package DS;
  * @author Saad
  *
  */
-public interface LinkedList<E> {
+public interface LinkedListInterface<E> {
 	
 	public int length();
 	
