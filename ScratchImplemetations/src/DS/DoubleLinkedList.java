@@ -22,8 +22,15 @@ public class DoubleLinkedList<E> implements LinkedListInterface<E> {
 	}
 
 	public void set(int index, E element) {
-		// TODO Auto-generated method stub
-
+		checkBounds(index);
+		Node<E> placeHolder = header.getNext();
+		
+		int counter=0;
+		while(counter<index){
+			placeHolder=placeHolder.getNext();
+			counter++;
+		}
+		placeHolder.setElement(element);
 	}
 
 	public void addFirst(E element) {

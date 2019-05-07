@@ -19,6 +19,9 @@ public class LinkedListMain {
 		list.addAt(5, 26);
 		System.out.println(list.toString()+" "+list.length());
 		
+		list.set(1, 88);
+		System.out.println(list.toString()+" "+list.length());
+		
 	}
 
 }
