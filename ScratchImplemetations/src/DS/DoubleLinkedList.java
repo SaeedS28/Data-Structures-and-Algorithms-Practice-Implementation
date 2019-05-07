@@ -155,6 +155,24 @@ public class DoubleLinkedList<E> implements LinkedListInterface<E> {
 		return indexReturn;
 	}
 
+	public DoubleLinkedList<E> clone(){
+		DoubleLinkedList<E> copy = new DoubleLinkedList<>();
+		
+		Node<E> placeHolder = header.getNext();
+		Node<E> copyTrailer = copy.trailer;
+		//System.out.println("reached here");
+		while(placeHolder != this.trailer) {
+			Node<E> previous = copyTrailer.getPrevious();
+			Node<E> newNode= new Node<>(previous,copyTrailer,placeHolder.getElement());
+			previous.setNext(newNode);
+			System.out.println(placeHolder.getElement());
+			copyTrailer.setPrevious(newNode);
+			placeHolder=placeHolder.getNext();
+		}
+		
+		return copy;
+	}
+	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("[ ");
