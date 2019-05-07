@@ -90,8 +90,26 @@ public class DoubleLinkedList<E> implements LinkedListInterface<E> {
 	}
 
 	public E remove(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		checkBounds(index);
+		
+		Node<E> placeHolder=header.getNext();
+		int counter=0;
+		
+		while(counter<index){
+			placeHolder=placeHolder.getNext();
+			counter++;
+		}
+		
+		Node<E> previous=placeHolder.getPrevious();
+		Node<E> next=placeHolder.getNext();
+		
+		previous.setNext(next);
+		next.setPrevious(previous);
+		
+		E element=placeHolder.getElement();
+		placeHolder=null;
+		size--;
+		return element;
 	}
 
 	public int indexOf(E element) {
