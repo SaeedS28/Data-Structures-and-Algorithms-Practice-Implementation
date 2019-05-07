@@ -22,6 +22,8 @@ public class LinkedListMain {
 		list.set(1, 88);
 		System.out.println(list.toString()+" "+list.length());
 		
+		System.out.println(list.indexOf(2543));
+		
 	}
 
 }

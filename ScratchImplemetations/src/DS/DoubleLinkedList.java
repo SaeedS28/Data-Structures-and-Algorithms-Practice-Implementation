@@ -87,8 +87,21 @@ public class DoubleLinkedList<E> implements LinkedListInterface<E> {
 	}
 
 	public int indexOf(E element) {
-		// TODO Auto-generated method stub
-		return 0;
+		int indexReturn=-1;
+		
+		Node<E> placeHolder=header.getNext();
+		int counter=0;
+		
+		while(placeHolder!=trailer){
+			if(placeHolder.getElement().equals(element)){
+				indexReturn=counter;
+				break;
+			}
+			placeHolder=placeHolder.getNext();
+			counter++;
+		}
+		
+		return indexReturn;
 	}
 
 	public String toString() {
