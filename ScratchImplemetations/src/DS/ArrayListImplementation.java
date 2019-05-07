@@ -26,7 +26,7 @@ public class ArrayListImplementation<E> implements ArrayedListInterface<E> {
 			}
 			array = array2;
 		}
-		for(int i=this.numElements-1;i<=index;i--) {
+		for(int i=this.numElements-1;i>=index;i--) {
 			array[i+1]=array[i];
 		}
 		array[index]=element;
