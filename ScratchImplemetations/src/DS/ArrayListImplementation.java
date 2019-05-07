@@ -60,8 +60,28 @@ public class ArrayListImplementation<E> implements ArrayedListInterface<E> {
 	}
 
 	public E remove(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		checkBounds(index,this.numElements);
+		
+		E retVal=array[index];
+		for(int i=index;i<this.numElements;i++) {
+			array[i]=array[i+1];
+		}
+		array[this.numElements]=null;
+		numElements--;
+		
+		// shrink arrayList if size goes below a certain threshold
+		
+		int threshold=(int) (0.25*array.length);
+		
+		if(numElements<threshold) {
+			E array2[] =(E[]) new Object[(int)(0.5*array.length)]; 
+			for(int i=0;i<this.numElements;i++) {
+				array2[i]=array[i];
+			}
+			array=array2;
+		}
+		
+		return retVal;
 	}
 
 	public int numberOfElements() {
