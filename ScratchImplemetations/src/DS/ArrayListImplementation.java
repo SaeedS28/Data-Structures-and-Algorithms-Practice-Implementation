@@ -13,13 +13,26 @@ public class ArrayListImplementation<E> implements ArrayedListInterface<E> {
 	
 	public ArrayListImplementation(int size) {
 		array=(E[])new Object[size];
+		numElements=0;
 	}
 	
 	public void add(int index, E element) {
-		// TODO Auto-generated method stub
+		checkBounds(index,this.numElements+1);
+		//resize if the bounds are reached
+		if(this.numElements==array.length) {
+			E array2[]=(E[])new Object[2*array.length];
+			for(int i=0;i<numElements;i++) {
+				array[i]=array2[i];
+			}
+			array = array2;
+		}
+		for(int i=this.numElements-1;i<=index;i--) {
+			array[i+1]=array[i];
+		}
+		array[index]=element;
+		numElements++;
 	}
 
-	
 	public E get(int index) {
 		return array[index];
 	}
@@ -50,4 +63,9 @@ public class ArrayListImplementation<E> implements ArrayedListInterface<E> {
 		return this.numElements;
 	}
 
+	private void checkBounds(int i,int j) {
+		if(i<0||i>j) {
+			throw new IndexOutOfBoundsException("Out of bounds m8! Not a good look");
+		}
+	}
 }
