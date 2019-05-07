@@ -12,6 +12,11 @@ public class LinkedListMain {
 		list.addFirst(155);
 		System.out.println(list.toString());
 		
+		list.addLast(22);
+		list.addLast(222);
+		list.addFirst(12111);
+		System.out.println(list.toString());
+		
 	}
 
 }
