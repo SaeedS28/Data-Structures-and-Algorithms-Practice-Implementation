@@ -89,6 +89,17 @@ public class ArrayListImplementation<E> implements ArrayedListInterface<E> {
 		return this.numElements;
 	}
 
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("[ ");
+		
+		for(int i=0;i<this.numElements;i++) {
+			sb.append(array[i].toString()+" ");
+		}
+		sb.append("]");
+		return sb.toString();
+	}
+	
 	private void checkBounds(int i,int j) {
 		if(i<0||i>j) {
 			throw new IndexOutOfBoundsException("Out of bounds m8! Not a good look");
