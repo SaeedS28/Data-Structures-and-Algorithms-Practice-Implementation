@@ -15,7 +15,9 @@ public class LinkedListMain {
 		list.addLast(22);
 		list.addLast(222);
 		list.addFirst(12111);
-		System.out.println(list.toString());
+		//list.addAt(0, 42);
+		list.addAt(5, 26);
+		System.out.println(list.toString()+" "+list.length());
 		
 	}
 

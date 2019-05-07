@@ -47,12 +47,31 @@ public class DoubleLinkedList<E> implements LinkedListInterface<E> {
 		existing.setNext(newNode);
 		trailer.setPrevious(newNode);
 		size++;
-
 	}
 
-	public void addBetween(int index, E element) {
-		// TODO Auto-generated method stub
-
+	public void addAt(int index, E element) {
+		checkBounds(index);
+		
+		if(index == 0) {
+			this.addFirst(element);
+		}
+		else if(index == this.length()-1) {
+			this.addLast(element);
+		}
+		else {
+			Node<E> placeHolder=header.getNext();
+			int counter = 0;
+			while(counter<index-1) {
+				placeHolder=placeHolder.getNext();
+				counter++;
+			}
+			//placeholder is directly before the index where we want to add
+			Node<E> nextPlaceHolder=placeHolder.getNext();
+			Node<E> newNode=new Node<>(placeHolder,nextPlaceHolder,element);
+			placeHolder.setNext(newNode);
+			nextPlaceHolder.setPrevious(newNode);
+			size++;
+		}
 	}
 
 	public E remove(int index) {

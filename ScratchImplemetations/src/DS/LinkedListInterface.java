@@ -19,7 +19,7 @@ public interface LinkedListInterface<E> {
 	
 	public void addLast(E element);
 	
-	public void addBetween(int index, E element);
+	public void addAt(int index, E element);
 	
 	public E remove(int index);
 	
