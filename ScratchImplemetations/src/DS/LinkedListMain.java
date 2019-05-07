@@ -23,6 +23,7 @@ public class LinkedListMain {
 		System.out.println(list.toString()+" "+list.length());
 		
 		System.out.println(list.indexOf(2543));
+		System.out.println(list.element(0));
 		
 	}
 

@@ -17,8 +17,16 @@ public class DoubleLinkedList<E> implements LinkedListInterface<E> {
 		return this.size;
 	}
 
-	public E getValue(int index) {
-		return null;
+	public E element(int index) {
+		checkBounds(index);
+		Node<E> placeHolder = header.getNext();
+		
+		int counter=0;
+		while(counter<index){
+			placeHolder=placeHolder.getNext();
+			counter++;
+		}
+		return placeHolder.getElement();
 	}
 
 	public void set(int index, E element) {

@@ -11,7 +11,7 @@ public interface LinkedListInterface<E> {
 	
 	public int length();
 	
-	public E getValue(int index);
+	public E element(int index);
 	
 	public void set(int index, E element);
 	
