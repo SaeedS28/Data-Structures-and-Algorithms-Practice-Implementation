@@ -13,10 +13,16 @@ public class DoubleLinkedList<E> implements LinkedListInterface<E> {
 		this.header.setNext(trailer);
 	}
 
+	/**
+	 * @return the number of elements within the linked list
+	 */
 	public int length() {
 		return this.size;
 	}
 
+	/**
+	 * @return the element stored in a valid index
+	 */
 	public E element(int index) {
 		checkBounds(index);
 		Node<E> placeHolder = header.getNext();
@@ -29,6 +35,9 @@ public class DoubleLinkedList<E> implements LinkedListInterface<E> {
 		return placeHolder.getElement();
 	}
 
+	/**
+	 * Sets the object at index i to the element passed in
+	 */
 	public void set(int index, E element) {
 		checkBounds(index);
 		Node<E> placeHolder = header.getNext();
@@ -41,6 +50,9 @@ public class DoubleLinkedList<E> implements LinkedListInterface<E> {
 		placeHolder.setElement(element);
 	}
 
+	/**
+	 * Adds element to the start of the list
+	 */
 	public void addFirst(E element) {
 
 		// setting the new node connections
@@ -53,6 +65,9 @@ public class DoubleLinkedList<E> implements LinkedListInterface<E> {
 		size++;
 	}
 
+	/**
+	 * Adds element to the end of the list
+	 */
 	public void addLast(E element) {
 		// setting the new node connections
 		Node<E> existing = trailer.getPrevious();
@@ -64,6 +79,9 @@ public class DoubleLinkedList<E> implements LinkedListInterface<E> {
 		size++;
 	}
 
+	/**
+	 * Adds element at a given valid index and pushes everything to the right by 1 
+	 */
 	public void addAt(int index, E element) {
 		checkBounds(index);
 		
@@ -89,6 +107,10 @@ public class DoubleLinkedList<E> implements LinkedListInterface<E> {
 		}
 	}
 
+	/**
+	 * Deletes the element at a valid index
+	 * @return the element that was just deleted
+	 */
 	public E remove(int index) {
 		checkBounds(index);
 		
@@ -112,6 +134,9 @@ public class DoubleLinkedList<E> implements LinkedListInterface<E> {
 		return element;
 	}
 
+	/**
+	 * @return the index of the first occurrence of the element in question, -1 if the element does not exist
+	 */
 	public int indexOf(E element) {
 		int indexReturn=-1;
 		
