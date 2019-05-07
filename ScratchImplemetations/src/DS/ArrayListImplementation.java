@@ -49,8 +49,14 @@ public class ArrayListImplementation<E> implements ArrayedListInterface<E> {
 
 	
 	public int indexOf(E element) {
-		// TODO Auto-generated method stub
-		return 0;
+		int placeOf=-1;
+		for(int i=0;i<this.numElements;i++) {
+			if(array[i]==element) {
+				placeOf=i;
+				break;
+			}
+		}
+		return placeOf;
 	}
 
 	public E remove(int index) {
