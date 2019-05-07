@@ -83,6 +83,10 @@ public class ArrayListImplementation<E> implements ArrayedListInterface<E> {
 		
 		return retVal;
 	}
+	
+	public int capacity() {
+		return array.length;
+	}
 
 	public int numberOfElements() {
 		// TODO Auto-generated method stub
@@ -96,7 +100,9 @@ public class ArrayListImplementation<E> implements ArrayedListInterface<E> {
 		for(int i=0;i<this.numElements;i++) {
 			sb.append(array[i].toString()+" ");
 		}
-		sb.append("]");
+		sb.append("]\n");
+		sb.append("Capacity of the ArrayList: "+capacity()+"\n");
+		sb.append("Elements stored in ArrayList: "+numberOfElements()+"\n");
 		return sb.toString();
 	}
 	
