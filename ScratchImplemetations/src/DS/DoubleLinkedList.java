@@ -28,7 +28,15 @@ public class DoubleLinkedList<E> implements LinkedListInterface<E> {
 	}
 
 	public void addFirst(E element) {
-		// TODO Auto-generated method stub
+		
+		// setting the new node connections
+		Node<E> existing = header.getNext();
+		Node<E> newNode = new Node<>(null,existing,element);
+		newNode.setPrevious(header);
+		
+		existing.setPrevious(newNode);
+		header.setNext(newNode);
+		size++;
 		
 	}
 
@@ -52,6 +60,20 @@ public class DoubleLinkedList<E> implements LinkedListInterface<E> {
 		return 0;
 	}
 
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("[ ");
+		
+		Node<E> placeHolder = header.getNext();
+		
+		while(placeHolder != trailer) {
+			sb.append(placeHolder.getElement().toString()+ " ");
+			placeHolder=placeHolder.getNext();
+		}
+		sb.append("]");
+		return sb.toString();
+	}
+	
 	private void checkBounds(int index) {
 		if (index<0 || index >this.length()-1)
 			throw new IndexOutOfBoundsException("Index out of bounds!");
