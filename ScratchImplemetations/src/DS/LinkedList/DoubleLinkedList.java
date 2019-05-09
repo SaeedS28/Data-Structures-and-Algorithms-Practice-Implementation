@@ -1,4 +1,4 @@
-package DS;
+package DS.LinkedList;
 
 public class DoubleLinkedList<E> implements LinkedListInterface<E> {
 

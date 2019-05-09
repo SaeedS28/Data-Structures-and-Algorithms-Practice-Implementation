@@ -1,7 +1,7 @@
 /**
  * 
  */
-package DS;
+package DS.LinkedList;
 
 /**
  * @author Saad

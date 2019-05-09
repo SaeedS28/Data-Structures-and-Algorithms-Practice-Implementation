@@ -1,4 +1,4 @@
-package DS;
+package DS.ArrayList;
 
 public interface ArrayedListInterface<E> {
 
