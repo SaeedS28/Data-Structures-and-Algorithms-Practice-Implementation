@@ -1,19 +1,19 @@
 package Algorithms.HashTables;
 
-public class Pair<K, V> {
+public class Pair<V> {
 	
-	private K key;
+	private String key;
 	private V value;
 	
-	public Pair(K key, V value) {
+	public Pair(String key, V value) {
 		this.setKey(key);
 		this.setValue(value);
 	}
 	
-	public K getKey() {
+	public String getKey() {
 		return key;
 	}
-	public void setKey(K key) {
+	public void setKey(String key) {
 		this.key = key;
 	}
 	public V getValue() {
@@ -25,7 +25,7 @@ public class Pair<K, V> {
 	
 	public boolean equals(Object o) {
 		if(this.getClass().equals(o.getClass())) {
-			Pair<K,V> other=(Pair<K,V>) o;
+			Pair<V> other=(Pair<V>) o;
 			if(other.getKey().equals(this.getKey())) {
 				return true;
 			}

@@ -2,25 +2,31 @@ package Algorithms.HashTables;
 
 import java.util.LinkedList;
 
-public class HashTable<K, V> {
+public class HashTable<V> {
 
-	private LinkedList<Pair<K,V>>[] array;
+	private LinkedList<Pair<V>>[] array;
 	
 	
 	public HashTable(int size) {
-		array=(LinkedList<Pair<K,V>>[])new LinkedList[size];
+		array=(LinkedList<Pair<V>>[])new LinkedList[size];
 	}
 	
 	
-	public boolean insertPair(Pair<K,V> pair) {
+	public boolean insertPair(Pair<V> pair) {
 		//calculating the hash function
 		boolean isAdded=false;
-		int keyHash=Integer.decode(Integer.toHexString(pair.hashCode()));
+		int keyHash=0;
+		char toChar[]=pair.getKey().toCharArray();
+		
+		for(int i=0;i<toChar.length;i++) {
+			keyHash=keyHash+(int)toChar[i];
+		}
+		
 		keyHash = keyHash%array.length;
 		System.out.println("Hash Index= "+keyHash);
 		
 		if(array[keyHash].equals(null)) {
-			array[keyHash]=new LinkedList<Pair<K,V>>();
+			array[keyHash]=new LinkedList<Pair<V>>();
 			array[keyHash].add(pair);
 			isAdded=true;
 		}
@@ -43,7 +49,7 @@ public class HashTable<K, V> {
 		return isAdded;
 	}
 	
-	public Pair<K,V> retrieve(K key){
+	public Pair<V> retrieve(K key){
 		
 	}
 }
