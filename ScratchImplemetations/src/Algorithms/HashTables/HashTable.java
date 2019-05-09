@@ -49,7 +49,7 @@ public class HashTable<V> {
 		return isAdded;
 	}
 	
-	public Pair<V> retrieve(String key){
+	public V retrieve(String key){
 		int keyHash=0;
 		char toChar[]=key.toCharArray();
 		
@@ -66,12 +66,22 @@ public class HashTable<V> {
 		else {
 			for(int i=0;i<array[keyHash].size();i++) {
 				if(array[keyHash].get(i).getKey().equals(key)){
-					return array[keyHash].get(i);
+					return array[keyHash].get(i).getValue();
 				}
 			}
 		}
 		return null;
 	}
 	
-	
+	public String toString() {
+		StringBuilder sb=new StringBuilder();
+		for(int i=0;i<array.length;i++) {
+			sb.append("|--- ");
+			for(int j=0;j<array[i].size();j++) {
+				sb.append(array[i].get(j));
+			}
+			sb.append(" ---|");
+		}
+		return sb.toString();
+	}
 }
