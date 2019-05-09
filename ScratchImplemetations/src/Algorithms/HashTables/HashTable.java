@@ -49,7 +49,29 @@ public class HashTable<V> {
 		return isAdded;
 	}
 	
-	public Pair<V> retrieve(K key){
+	public Pair<V> retrieve(String key){
+		int keyHash=0;
+		char toChar[]=key.toCharArray();
 		
+		for(int i=0;i<toChar.length;i++) {
+			keyHash=keyHash+(int)toChar[i];
+		}
+		
+		keyHash = keyHash%array.length;
+		System.out.println("Hash Index= "+keyHash);
+		
+		if(array[keyHash].equals(null)) {
+			return null;
+		}
+		else {
+			for(int i=0;i<array[keyHash].size();i++) {
+				if(array[keyHash].get(i).getKey().equals(key)){
+					return array[keyHash].get(i);
+				}
+			}
+		}
+		return null;
 	}
+	
+	
 }
