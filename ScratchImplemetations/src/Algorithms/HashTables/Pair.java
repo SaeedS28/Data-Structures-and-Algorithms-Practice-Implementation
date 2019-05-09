@@ -22,4 +22,14 @@ public class Pair<K, V> {
 	public void setValue(V value) {
 		this.value = value;
 	}
+	
+	public boolean equals(Object o) {
+		if(this.getClass().equals(o.getClass())) {
+			Pair<K,V> other=(Pair<K,V>) o;
+			if(other.getKey().equals(this.getKey())) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
