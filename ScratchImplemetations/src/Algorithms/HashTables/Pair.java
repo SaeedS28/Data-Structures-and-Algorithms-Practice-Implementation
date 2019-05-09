@@ -32,4 +32,8 @@ public class Pair<K, V> {
 		}
 		return false;
 	}
+	
+	public String toString() {
+		return ("("+this.getKey().toString()+","+this.getValue().toString()+")");
+	}
 }

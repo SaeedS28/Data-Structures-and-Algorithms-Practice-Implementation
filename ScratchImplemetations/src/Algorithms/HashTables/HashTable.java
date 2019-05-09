@@ -17,6 +17,7 @@ public class HashTable<K, V> {
 		boolean isAdded=false;
 		int keyHash=Integer.decode(Integer.toHexString(pair.hashCode()));
 		keyHash = keyHash%array.length;
+		System.out.println("Hash Index= "+keyHash);
 		
 		if(array[keyHash].equals(null)) {
 			array[keyHash]=new LinkedList<Pair<K,V>>();
@@ -38,7 +39,11 @@ public class HashTable<K, V> {
 				array[keyHash].get(counter).setValue(pair.getValue());			
 			}
 		}
+		System.out.println(isAdded);
 		return isAdded;
 	}
 	
+	public Pair<K,V> retrieve(K key){
+		
+	}
 }
