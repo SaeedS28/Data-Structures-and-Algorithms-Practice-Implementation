@@ -25,7 +25,7 @@ public class HashTable<V> {
 		keyHash = keyHash%array.length;
 		System.out.println("Hash Index= "+keyHash);
 		
-		if(array[keyHash].equals(null)) {
+		if(array[keyHash]==null) {
 			array[keyHash]=new LinkedList<Pair<V>>();
 			array[keyHash].add(pair);
 			isAdded=true;
@@ -60,7 +60,7 @@ public class HashTable<V> {
 		keyHash = keyHash%array.length;
 		System.out.println("Hash Index= "+keyHash);
 		
-		if(array[keyHash].equals(null)) {
+		if(array[keyHash]==null) {
 			return null;
 		}
 		else {
@@ -77,10 +77,13 @@ public class HashTable<V> {
 		StringBuilder sb=new StringBuilder();
 		for(int i=0;i<array.length;i++) {
 			sb.append("|--- ");
-			for(int j=0;j<array[i].size();j++) {
-				sb.append(array[i].get(j));
+			if(array[i]!=null) {
+				for(int j=0;j<array[i].size();j++) {
+					sb.append(array[i].get(j));
+				}
 			}
-			sb.append(" ---|");
+			
+			sb.append(" ---|\n");
 		}
 		return sb.toString();
 	}
