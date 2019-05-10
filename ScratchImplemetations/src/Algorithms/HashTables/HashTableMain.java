@@ -14,5 +14,9 @@ public class HashTableMain {
 		ht.insertPair(new Pair<Integer>("Java",0));
 		ht.insertPair(new Pair<Integer>("C++",222));
 		System.out.println(ht.toString());
+		
+		System.out.println(ht.retrieve("Saad"));
+		System.out.println(ht.retrieve("Saeed"));
+		System.out.println(ht.retrieve("C++"));
 	}
 }

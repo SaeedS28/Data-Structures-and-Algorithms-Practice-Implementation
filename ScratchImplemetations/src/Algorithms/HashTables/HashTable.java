@@ -23,7 +23,6 @@ public class HashTable<V> {
 		}
 		
 		keyHash = keyHash%array.length;
-		System.out.println("Hash Index= "+keyHash);
 		
 		if(array[keyHash]==null) {
 			array[keyHash]=new LinkedList<Pair<V>>();
@@ -45,7 +44,6 @@ public class HashTable<V> {
 				array[keyHash].get(counter).setValue(pair.getValue());			
 			}
 		}
-		System.out.println(isAdded);
 		return isAdded;
 	}
 	
@@ -58,7 +56,6 @@ public class HashTable<V> {
 		}
 		
 		keyHash = keyHash%array.length;
-		System.out.println("Hash Index= "+keyHash);
 		
 		if(array[keyHash]==null) {
 			return null;
@@ -83,7 +80,7 @@ public class HashTable<V> {
 				}
 			}
 			
-			sb.append(" ---|\n");
+			sb.append("---|\n");
 		}
 		return sb.toString();
 	}
