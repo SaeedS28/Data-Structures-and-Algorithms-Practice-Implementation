@@ -18,24 +18,34 @@ public class NineToFourConverter {
 		int coursesTaken=input.nextInt();
 		System.out.println("\nEnter the course grade followed by the credit value. For example: A+ 3");
 		int credit;
-		int totalCredits=0;
-		int coursePoints=0;
+		double totalCredits=0;
+		int coursePointsYork=0;
+		double coursePointsFourScale=0;
 		double yorkGPA;
+		double gpaFourScale; 
 		
 		for(int i=1;i<=coursesTaken;i++) {
 			System.out.print("Course "+i+": ");
 			String grade=input.next();
 			credit=input.nextInt();
 			
-			coursePoints=coursePoints+(gradeToNumericalConverterYork(grade)*credit);
+			// York
+			coursePointsYork=coursePointsYork+(gradeToNumericalConverterYork(grade)*credit);
+			// Four Scale
+			coursePointsFourScale=coursePointsFourScale+(gradeToNumericalConverterFour(grade)*credit);
+			
 			totalCredits=totalCredits+credit;
+			
 		}
 		
-		System.out.println("Total Grade Points: "+coursePoints+"\tTotal Credits Taken: "+totalCredits);
-		yorkGPA=coursePoints / (double)totalCredits;
-		System.out.printf("Your York GPA is: %.2f\n",yorkGPA);
+		System.out.println("Total Grade Points (York): "+coursePointsYork+"\tTotal Credits Taken: "+totalCredits);
+		yorkGPA=coursePointsYork / (double)totalCredits;
+		System.out.printf("Your York GPA is: %.2f\n\n",yorkGPA);
 		
-
+		System.out.printf("Total Grade Points (4-Scale): %.3f\tTotal Credits Taken: %d", coursePointsFourScale, totalCredits);
+		gpaFourScale=coursePointsFourScale/totalCredits;
+		System.out.printf("Your GPA on a 4-Scale is: %.2f\n",gpaFourScale);
+		input.close();
 	}
 
 	public static int gradeToNumericalConverterYork(String grade) {
