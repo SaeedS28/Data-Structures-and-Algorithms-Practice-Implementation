@@ -5,31 +5,48 @@ public class BinaryTree<V> implements BinaryTreeInterface<V> {
 	private Entry<V> root;
 	
 	public void addEntry(Entry<V> entry) {
-		
+		if(root==null) {
+			root=entry;
+		} else {
+			Entry<V> parent=root;
+			Entry<V> current=root;
+			
+			while(true) {
+				parent=current;
+				if(entry.getKey()<=current.getKey()) {
+					current=current.getLeftChild();
+					if(current==null) {
+						parent.setLeftChild(entry);
+						return;
+					}
+				} else {
+					current=current.getRightChild();
+					if(current==null) {
+						parent.setRightChild(entry);
+						return;
+					}
+				}
+			}
+		}
 	}
 
 	public V findValue(int key) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public void postOrderTraversal() {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	public void preOrderTraversal() {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	public void inOrderTraversal() {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	public Entry<V> removeEntry(int key) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
