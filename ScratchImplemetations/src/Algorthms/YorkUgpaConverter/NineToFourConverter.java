@@ -15,14 +15,30 @@ public class NineToFourConverter {
 		
 		Scanner input=new Scanner(System.in);
 		
-		int counter=input.nextInt();
+		int coursesTaken=input.nextInt();
+		System.out.println("\nEnter the course grade followed by the credit value. For example: A+ 3");
+		int credit;
+		int totalCredits=0;
+		int coursePoints=0;
+		double yorkGPA;
 		
+		for(int i=1;i<=coursesTaken;i++) {
+			System.out.print("Course "+i+": ");
+			String grade=input.next();
+			credit=input.nextInt();
+			
+			coursePoints=coursePoints+(gradeToNumericalConverterYork(grade)*credit);
+			totalCredits=totalCredits+credit;
+		}
 		
+		System.out.println("Total Grade Points: "+coursePoints+"\tTotal Credits Taken: "+totalCredits);
+		yorkGPA=coursePoints / (double)totalCredits;
+		System.out.printf("Your York GPA is: %.2f\n",yorkGPA);
 		
 
 	}
 
-	public static int gradeToNumericalConverter(String grade) {
+	public static int gradeToNumericalConverterYork(String grade) {
 		
 		switch(grade) {
 			case "A+":
