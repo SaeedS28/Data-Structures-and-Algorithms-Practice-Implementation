@@ -8,19 +8,46 @@ import java.util.Scanner;
 public class NineToFourConverter {
 
 	public static void main(String[] args) {
-		System.out.println("This program takes your YorkU GPA and converts it to the traditional 4.0 scale\n\n");
-		System.out.print("Please enter the number of courses taken so far (IGNORE PASS/FAIL COURSES): ");
+		System.out.println("This program takes your YorkU GPA and converts it to the traditional 4.0 scale\n");
+		System.out.print("Please enter the number of courses taken so far \n(1)\tIgnore pass/fail courses"
+				+ "\n(2)\tEnter repeated courses only once\n\n");
+		System.out.print("Enter the number of courses: ");
 		
 		Scanner input=new Scanner(System.in);
 		
 		int counter=input.nextInt();
+		
+		
 		
 
 	}
 
 	public static int gradeToNumericalConverter(String grade) {
 		
-		return 0;
+		switch(grade) {
+			case "A+":
+				return 9;
+			case "A":
+				return 8;
+			case "B+":
+				return 7;
+			case "B":
+				return 6;
+			case "C+":
+				return 5;
+			case "C":
+				return 4;
+			case "D+":
+				return 3;
+			case "D":
+				return 2;
+			case "E":
+				return 1;
+			case "F":
+				return 0;
+			default:
+				return 0;
+		}
 	}
 	
 }
