@@ -50,16 +50,28 @@ public class BinaryTree<V> implements BinaryTreeInterface<V> {
 		return null;
 	}
 
-	public void postOrderTraversal() {
-		
+	public void postOrderTraversal(Entry<V> start) {
+		if(start!=null) {
+			inOrderTraversal(start.getLeftChild());
+			inOrderTraversal(start.getRightChild());
+			System.out.println(start.toString());
+		}
 	}
 
-	public void preOrderTraversal() {
-		
+	public void preOrderTraversal(Entry<V> start) {
+		if(start!=null) {
+			System.out.println(start.toString());
+			inOrderTraversal(start.getLeftChild());
+			inOrderTraversal(start.getRightChild());
+		}
 	}
 
-	public void inOrderTraversal() {
-		
+	public void inOrderTraversal(Entry<V> start) {
+		if(start!=null) {
+			inOrderTraversal(start.getLeftChild());
+			System.out.println(start.toString());
+			inOrderTraversal(start.getRightChild());
+		}
 	}
 
 	public Entry<V> removeEntry(int key) {

@@ -5,11 +5,11 @@ public interface BinaryTreeInterface<V> {
 	
 	public V findValue(int key);
 	
-	public void postOrderTraversal();
+	public void postOrderTraversal(Entry<V> root);
 	
-	public void preOrderTraversal();
+	public void preOrderTraversal(Entry<V> root);
 	
-	public void inOrderTraversal();
+	public void inOrderTraversal(Entry<V> root);
 	
 	public Entry<V> removeEntry(int key);
 }
