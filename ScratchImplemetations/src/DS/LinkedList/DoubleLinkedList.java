@@ -203,20 +203,25 @@ public class DoubleLinkedList<E> implements LinkedListInterface<E> {
 	}
 	
 	
-	private class LinkedIterator<E> implements Iterator<E> {
+	private class LinkedIterator implements Iterator<E> {
 
-		Node<E> current=header;
+		Node<E> current=header.getNext();
 		
-		@Override
 		public boolean hasNext() {
-			// TODO Auto-generated method stub
+			if(current==trailer) {
+				return false;
+			}
+			if(current!=null) {
+				return (current.getNext()!=null);
+			}
 			return false;
 		}
 
 		@Override
 		public E next() {
-			// TODO Auto-generated method stub
-			return null;
+			E retVal=current.getElement();
+			current=current.getNext();
+			return retVal;
 		}
 		
 	}
