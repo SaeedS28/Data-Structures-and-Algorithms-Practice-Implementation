@@ -140,6 +140,7 @@ public class BinaryTree<V> implements BinaryTreeInterface<V> {
 			}
 			replace.setLeftChild(current.getLeftChild());
 		}
+		numberOfElements--;
 		return true;
 	}
 
