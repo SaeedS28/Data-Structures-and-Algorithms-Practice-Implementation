@@ -11,5 +11,5 @@ public interface BinaryTreeInterface<V> {
 	
 	public void inOrderTraversal(Entry<V> root);
 	
-	public Entry<V> removeEntry(int key);
+	public boolean removeEntry(int key);
 }

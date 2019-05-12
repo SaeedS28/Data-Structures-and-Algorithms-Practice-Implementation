@@ -74,8 +74,43 @@ public class BinaryTree<V> implements BinaryTreeInterface<V> {
 		}
 	}
 
-	public Entry<V> removeEntry(int key) {
-		return null;
+	public boolean removeEntry(int key) {
+		if(root==null) {
+			return false;
+		}
+		boolean leftChild=false;
+		
+		Entry<V> parent = root;
+		Entry<V> current = root;
+		
+		while(current!=null) {
+			parent=current;
+			if(key<=current.getKey()) {
+				leftChild=true;
+				current=current.getLeftChild();
+			} else {
+				leftChild=false;
+				current=current.getRightChild();
+			}
+			if(current==null) {
+				return false;
+			}
+		}
+		
+		// case where the node is a leaf
+		if(current.getLeftChild()==null && current.getRightChild()==null) {
+			if(current==root) {
+				root=null;
+				return true;
+			}
+			if(leftChild) {
+				parent.setLeftChild(null);
+				return true;
+			} else {
+				parent.setRightChild(null);
+				return true;
+			}
+		}
 	}
 
 	public int getNumberOfElements() {
