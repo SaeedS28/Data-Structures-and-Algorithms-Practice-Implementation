@@ -140,11 +140,24 @@ public class BinaryTree<V> implements BinaryTreeInterface<V> {
 			}
 			replace.setLeftChild(current.getLeftChild());
 		}
+		return true;
 	}
 
 	private Entry<V> replacementFound(Entry<V> current) {
-		// TODO Auto-generated method stub
-		return null;
+		Entry<V> replaceParent = current;
+		Entry<V> replace = current;
+		Entry<V> now = current.getRightChild();
+		
+		while(now!=null) {
+			replaceParent=replace;
+			replace=now;
+			now=now.getLeftChild();
+		}
+		if(replace!=current.getRightChild()) {
+			replaceParent.setLeftChild(replace.getRightChild());
+			replace.setRightChild(current.getRightChild());
+		}
+		return replace;
 	}
 
 	public int getNumberOfElements() {
