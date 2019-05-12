@@ -1,5 +1,7 @@
 package DS.LinkedList;
 
+import java.util.Iterator;
+
 public class LinkedListMain {
 
 	public static void main(String[] args) {
@@ -31,6 +33,12 @@ public class LinkedListMain {
 //		System.out.println(list.remove(6));
 //		System.out.println(list.remove(0));
 		System.out.println(list2.toString());
+		
+		Iterator<Integer> iter= list2.iterator();
+		
+		while(iter.hasNext()) {
+			System.out.println(iter.next());
+		}
 	}
 
 }

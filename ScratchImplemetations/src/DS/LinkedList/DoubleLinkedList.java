@@ -2,8 +2,6 @@ package DS.LinkedList;
 
 import java.util.Iterator;
 
-import DS.LinkedList.DoubleLinkedList.Node;
-
 public class DoubleLinkedList<E> implements LinkedListInterface<E> {
 
 	private int size;
@@ -217,7 +215,6 @@ public class DoubleLinkedList<E> implements LinkedListInterface<E> {
 			return false;
 		}
 
-		@Override
 		public E next() {
 			E retVal=current.getElement();
 			current=current.getNext();
