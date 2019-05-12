@@ -101,16 +101,50 @@ public class BinaryTree<V> implements BinaryTreeInterface<V> {
 		if(current.getLeftChild()==null && current.getRightChild()==null) {
 			if(current==root) {
 				root=null;
-				return true;
-			}
-			if(leftChild) {
+			} else if(leftChild) {
 				parent.setLeftChild(null);
-				return true;
 			} else {
 				parent.setRightChild(null);
-				return true;
+			}
+		} 
+		// case where the node has a left child
+		else if(current.getRightChild()==null) {
+			if(current==root) {
+				root=current.getLeftChild();
+			} else if(leftChild) {
+				parent.setLeftChild(current.getLeftChild());
+			} else {
+				parent.setRightChild(current.getLeftChild());
 			}
 		}
+		// case where the node has right child
+		else if(current.getLeftChild()==null) {
+			if(current==root) {
+				root=current.getRightChild();
+			} else if(leftChild) {
+				parent.setLeftChild(current.getRightChild());
+			} else {
+				parent.setRightChild(current.getRightChild());
+			}
+		}
+		// case where the node has both children
+		else {
+			Entry<V> replace=replacementFound(current);
+			
+			if(current==root) {
+				root=replace;
+			} else if(leftChild) {
+				parent.setLeftChild(replace);
+			} else {
+				parent.setRightChild(replace);
+			}
+			replace.setLeftChild(current.getLeftChild());
+		}
+	}
+
+	private Entry<V> replacementFound(Entry<V> current) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	public int getNumberOfElements() {
