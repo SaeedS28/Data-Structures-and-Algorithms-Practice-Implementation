@@ -1,5 +1,9 @@
 package DS.LinkedList;
 
+import java.util.Iterator;
+
+import DS.LinkedList.DoubleLinkedList.Node;
+
 public class DoubleLinkedList<E> implements LinkedListInterface<E> {
 
 	private int size;
@@ -187,11 +191,36 @@ public class DoubleLinkedList<E> implements LinkedListInterface<E> {
 		return sb.toString();
 	}
 
+	
+	public Iterator<E> iterator() {
+		// TODO Auto-generated method stub
+		return new LinkedIterator();
+	}
+	
 	private void checkBounds(int index) {
 		if (index < 0 || index > this.length() - 1)
 			throw new IndexOutOfBoundsException("Index out of bounds!");
 	}
+	
+	
+	private class LinkedIterator<E> implements Iterator<E> {
 
+		Node<E> current=header;
+		
+		@Override
+		public boolean hasNext() {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public E next() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+	}
+	
 	private static class Node<E> {
 		private Node<E> previous;
 		private Node<E> next;
@@ -227,4 +256,6 @@ public class DoubleLinkedList<E> implements LinkedListInterface<E> {
 			this.element = element;
 		}
 	}
+
+	
 }

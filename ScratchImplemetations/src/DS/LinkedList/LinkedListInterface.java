@@ -7,7 +7,7 @@ package DS.LinkedList;
  * @author Saad
  *
  */
-public interface LinkedListInterface<E> {
+public interface LinkedListInterface<E> extends Iterable<E> {
 	
 	public int length();
 	
