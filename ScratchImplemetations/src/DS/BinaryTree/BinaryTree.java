@@ -17,12 +17,14 @@ public class BinaryTree<V> implements BinaryTreeInterface<V> {
 					current=current.getLeftChild();
 					if(current==null) {
 						parent.setLeftChild(entry);
+						numberOfElements++;
 						return;
 					}
 				} else {
 					current=current.getRightChild();
 					if(current==null) {
 						parent.setRightChild(entry);
+						numberOfElements++;
 						return;
 					}
 				}
@@ -31,6 +33,20 @@ public class BinaryTree<V> implements BinaryTreeInterface<V> {
 	}
 
 	public V findValue(int key) {
+		if(root==null) {
+			return null;
+		}
+		Entry<V> current=root;
+		
+		while(current!=null) {
+			if(current.getKey()==key) {
+				return current.getValue();
+			} else if(key<=current.getKey()) {
+				current=current.getLeftChild();
+			} else {
+				current=current.getRightChild();
+			}
+		}
 		return null;
 	}
 
@@ -52,10 +68,6 @@ public class BinaryTree<V> implements BinaryTreeInterface<V> {
 
 	public int getNumberOfElements() {
 		return numberOfElements;
-	}
-
-	public void setNumberOfElements(int numberOfElements) {
-		this.numberOfElements = numberOfElements;
 	}
 
 }
