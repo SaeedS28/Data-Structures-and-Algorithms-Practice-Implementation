@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - HashTableMain",
+            "request": "launch",
+            "mainClass": "Algorithms.HashTables.HashTableMain",
+            "projectName": "ScratchImplemetations"
+        }
+    ]
+}

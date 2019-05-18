@@ -1,4 +1,4 @@
-package Algorthms.YorkUgpaConverter;
+package Algorithms.YorkUgpaConverter;
 import java.util.Scanner;
 
 // Conversion Table can be found at:
