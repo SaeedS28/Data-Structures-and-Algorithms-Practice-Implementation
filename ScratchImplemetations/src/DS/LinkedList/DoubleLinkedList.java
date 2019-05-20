@@ -15,6 +15,10 @@ public class DoubleLinkedList<E> implements LinkedListInterface<E> {
 		this.header.setNext(trailer);
 	}
 
+	public void sizeDecrement(){
+		size--;
+	}
+
 	/**
 	 * @return the number of elements within the linked list
 	 */
@@ -259,5 +263,7 @@ public class DoubleLinkedList<E> implements LinkedListInterface<E> {
 		}
 	}
 
-	
+	public Node<E> getTrailer() {
+		return trailer;
+	}
 }
