@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - LinkedListMain",
+            "request": "launch",
+            "mainClass": "DS.LinkedList.LinkedListMain",
+            "projectName": "ScratchImplemetations"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - StackTester",
             "request": "launch",
             "mainClass": "DS.StackAndQueue.StackTester",
