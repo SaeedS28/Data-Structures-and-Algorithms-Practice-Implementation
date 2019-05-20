@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - StackTester",
+            "request": "launch",
+            "mainClass": "DS.StackAndQueue.StackTester",
+            "projectName": "ScratchImplemetations"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - HashTableMain",
             "request": "launch",
             "mainClass": "Algorithms.HashTables.HashTableMain",

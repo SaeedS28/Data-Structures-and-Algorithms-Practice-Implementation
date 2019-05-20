@@ -107,10 +107,10 @@ public class ArrayedStack<E> implements Stack<E> {
         return -1;
     }
 
-    private void resize(int size){
-        E[] array2= (E[]) new Object[size];
+    private void resize(int newSize){
+        E[] array2= (E[]) new Object[newSize];
         
-        for(int i=0;i<size;i++){
+        for(int i=0;i<this.size;i++){
             array2[i]=array[i];
         }
         array=array2;
