@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - QueueTester",
+            "request": "launch",
+            "mainClass": "DS.StackAndQueue.QueueTester",
+            "projectName": "ScratchImplemetations"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - LinkedListMain",
             "request": "launch",
             "mainClass": "DS.LinkedList.LinkedListMain",

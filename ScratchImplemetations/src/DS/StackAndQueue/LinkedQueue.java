@@ -32,7 +32,7 @@ public class LinkedQueue<E> implements Queue<E> {
         if(queue.length()==0){
             return null;
         } else{
-            return queue.element(0);
+            return queue.element(size()-1);
         }
     }
 
