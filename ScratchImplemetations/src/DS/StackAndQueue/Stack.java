@@ -9,8 +9,8 @@ public interface Stack<E> {
 
     public E pop();
 
-    public void push();
+    public void push(E element);
 
-    public int search();
+    public int search(E element);
 
 }
