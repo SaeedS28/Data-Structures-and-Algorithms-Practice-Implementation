@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - PalindromePermutation",
+            "request": "launch",
+            "mainClass": "Agorithms.CTCIChap1.PalindromePermutation",
+            "projectName": "ScratchImplemetations"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - IsPermutation",
             "request": "launch",
             "mainClass": "Agorithms.CTCIChap1.IsPermutation",
