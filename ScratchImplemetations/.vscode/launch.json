@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - OneAway",
+            "request": "launch",
+            "mainClass": "Agorithms.CTCIChap1.OneAway",
+            "projectName": "ScratchImplemetations"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - StringCompression",
             "request": "launch",
             "mainClass": "Agorithms.CTCIChap1.StringCompression",
