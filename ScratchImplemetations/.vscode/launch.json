@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - LineIntersector",
+            "request": "launch",
+            "mainClass": "Algorithms.LineIntersect.LineIntersector",
+            "projectName": "ScratchImplemetations"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - SecondLargestElementInArray",
             "request": "launch",
             "mainClass": "Algorithms.SecondLargestElementInArray",

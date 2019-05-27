@@ -1,4 +1,4 @@
-package Algorithms;
+package Algorithms.LineIntersect;
 
 /**
  * LineIntersector
@@ -6,7 +6,13 @@ package Algorithms;
 public class LineIntersector {
 
     public static void main(String[] args) {
-        Point p=new Point(1,2);
+
+        // Line 1
+        Point L11=new Point(1,2);
+        Point L12=new Point(10,12);
+        Line line1= new Line(L11, L12);
+
+        System.out.println(line1.toString());
     }
 
 
