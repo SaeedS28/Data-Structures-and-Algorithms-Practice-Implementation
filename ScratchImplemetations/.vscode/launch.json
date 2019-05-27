@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - SecondLargestElementInArray",
+            "request": "launch",
+            "mainClass": "Algorithms.SecondLargestElementInArray",
+            "projectName": "ScratchImplemetations"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - OneAway",
             "request": "launch",
             "mainClass": "Agorithms.CTCIChap1.OneAway",
