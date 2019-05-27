@@ -1,4 +1,4 @@
-package Algorithms.HashTables;
+package DS.HashTables;
 
 import java.util.LinkedList;
 

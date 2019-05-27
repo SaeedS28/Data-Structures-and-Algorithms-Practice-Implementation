@@ -1,4 +1,4 @@
-package Algorithms.HashTables;
+package DS.HashTables;
 
 public class Pair<V> {
 	
