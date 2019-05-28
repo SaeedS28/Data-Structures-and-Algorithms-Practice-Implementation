@@ -1,6 +1,5 @@
 package Algorithms.LineIntersect;
 
-import java.time.chrono.ThaiBuddhistChronology;
 import java.util.Formatter;
 
 /**
@@ -56,10 +55,14 @@ public class Line {
         //fmt.close();
     }
 
-    // need to work on the case when you have 1 vertical line
+    // need to work on the case when you have 1 vertical line and parallell lines
     public String intersect(Line other) {
         if (this.equals(other)){
             return "The 2 lines have infinitely many solutions, since they are the same line";
+        }
+
+        if (Math.abs((this.findSlope() - other.findSlope())) < 0.00000001 && Math.abs(this.findSlope()-other.findSlope()) > 0.00000001){
+            return "The 2 lines have no solutions, since they are parallel to each other";
         }
 
         double xCoor = ((other.findYIntercept()-this.findYIntercept())/(this.findSlope()-other.findSlope()));
