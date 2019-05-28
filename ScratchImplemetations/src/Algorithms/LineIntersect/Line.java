@@ -31,10 +31,7 @@ public class Line {
         this.p1 = p1;
     }
 
-    public double findSlope(){
-        if (this.p1.getX()==this.p2.getX()) {
-            throw new IllegalArgumentException("The two x-values are the same. Division by zero");
-        }
+    public double findSlope() {
         return ((this.p2.getY()-this.p1.getY())/(this.p2.getX()-this.p1.getX()));
     }
     
