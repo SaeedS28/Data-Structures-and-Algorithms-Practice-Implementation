@@ -1,5 +1,6 @@
 package Algorithms.LineIntersect;
 
+import java.time.chrono.ThaiBuddhistChronology;
 import java.util.Formatter;
 
 /**
@@ -51,7 +52,29 @@ public class Line {
         } else {
             fmt.format("y = 0.2fx - %.2f", this.findSlope(),this.findYIntercept());
         }
-        return fmt.toString(); 
+        return fmt.toString();
         //fmt.close();
+    }
+
+    // need to work on the case when you have 1 vertical line
+    public String intersect(Line other) {
+        if (this.equals(other)){
+            return "The 2 lines have infinitely many solutions, since they are the same line";
+        }
+
+        double xCoor = ((other.findYIntercept()-this.findYIntercept())/(this.findSlope()-other.findSlope()));
+        double yInt = this.findSlope() * xCoor + this.findYIntercept();
+
+        return String.format("The point of intersection is (%.2f,%.2f)", xCoor, yInt);
+    }
+
+    public boolean equals(Object obj) {
+        if ((this.getClass()==obj.getClass())) {
+            Line l2=(Line) obj;
+            if (Math.abs((this.findSlope() - l2.findSlope())) < 0.00000001 && Math.abs(this.findSlope()-l2.findSlope()) < 0.00000001){
+                return true;
+            }
+        }
+        return false;
     }
 }
