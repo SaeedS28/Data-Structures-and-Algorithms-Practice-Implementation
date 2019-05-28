@@ -49,7 +49,7 @@ public class Line {
         if(findYIntercept()>=0){
             fmt.format("y = %.2fx + %.2f", this.findSlope(),this.findYIntercept());
         } else {
-            fmt.format("y = 0.2fx - %.2f", this.findSlope(),this.findYIntercept());
+            fmt.format("y = %.2fx - %.2f", this.findSlope(),this.findYIntercept());
         }
         return fmt.toString();
         //fmt.close();
@@ -61,7 +61,7 @@ public class Line {
             return "The 2 lines have infinitely many solutions, since they are the same line";
         }
 
-        if (Math.abs((this.findSlope() - other.findSlope())) < 0.00000001 && Math.abs(this.findSlope()-other.findSlope()) > 0.00000001){
+        if (Math.abs((this.findSlope() - other.findSlope())) < 0.00000001 && Math.abs(this.findYIntercept()-other.findYIntercept()) > 0.00000001){
             return "The 2 lines have no solutions, since they are parallel to each other";
         }
 
@@ -74,7 +74,7 @@ public class Line {
     public boolean equals(Object obj) {
         if ((this.getClass()==obj.getClass())) {
             Line l2=(Line) obj;
-            if (Math.abs((this.findSlope() - l2.findSlope())) < 0.00000001 && Math.abs(this.findSlope()-l2.findSlope()) < 0.00000001){
+            if (Math.abs((this.findSlope() - l2.findSlope())) < 0.00000001 && Math.abs(this.findYIntercept()-l2.findYIntercept()) < 0.00000001){
                 return true;
             }
         }
