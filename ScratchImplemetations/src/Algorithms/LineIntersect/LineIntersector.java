@@ -34,6 +34,9 @@ public class LineIntersector {
         System.out.println(line3.toString());
         System.out.println(line4.toString());
         System.out.println(line4.intersect(line3));
+
+        // throws an exception, as expected
+        //Line line5 = new Line(new Point(1, 2), new Point(1, 5));
     }
     
 }

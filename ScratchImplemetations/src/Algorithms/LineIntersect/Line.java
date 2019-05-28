@@ -11,6 +11,9 @@ public class Line {
     private Point p2;
 
     public Line(Point p1, Point p2) {
+        if(p1.getX()==p2.getX()){
+            throw new IllegalArgumentException("the two x-values cannot be the same");
+        }
         this.setP1(p1);
         this.setP2(p2);
     }
@@ -40,19 +43,14 @@ public class Line {
     }
 
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        Formatter fmt = new Formatter(sb);
 
-        if(findYIntercept()>=0){
-            fmt.format("y = %.2fx + %.2f", this.findSlope(),this.findYIntercept());
+        if(this.findYIntercept()>=0){
+            return String.format("y = %.2fx + %.2f", this.findSlope(),this.findYIntercept());
         } else {
-            fmt.format("y = %.2fx - %.2f", this.findSlope(),this.findYIntercept());
+            return String.format("y = %.2fx - %.2f", this.findSlope(),this.findYIntercept());
         }
-        return fmt.toString();
-        //fmt.close();
     }
 
-    // need to work on the case when you have 1 vertical line and parallell lines
     public String intersect(Line other) {
         if (this.equals(other)){
             return "The 2 lines have infinitely many solutions, since they are the same line";
