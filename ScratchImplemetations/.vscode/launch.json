@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - ReverseSumLinkedList",
+            "request": "launch",
+            "mainClass": "Algorithms.ReverseSumLinkedList",
+            "projectName": "ScratchImplemetations"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - LongestSubstringWithoutRepeats",
             "request": "launch",
             "mainClass": "Algorithms.LongestSubstringWithoutRepeats",
