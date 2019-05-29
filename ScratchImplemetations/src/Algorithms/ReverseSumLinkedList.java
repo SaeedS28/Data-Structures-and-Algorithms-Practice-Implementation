@@ -41,14 +41,6 @@ public class ReverseSumLinkedList {
             linked1=now;
             currentNode=currentNode.next;
         }
-        currentNode=linked1;
-
-        now=null;
-        while (currentNode!=null) {
-            System.out.print(currentNode.val+" ");
-            currentNode=currentNode.next;
-        }
-        System.out.println();
 
         currentNode=l2.next;
         while (currentNode!=null) {
@@ -58,12 +50,26 @@ public class ReverseSumLinkedList {
             currentNode=currentNode.next;
         }
 
-        currentNode=linked2;
+        currentNode = linked1;
+
+        // grab the numbers within the linked lists
+        String first="";
+        String second="";
+
         while (currentNode!=null) {
-            System.out.print(currentNode.val+" ");
+            first=first+currentNode.val;
             currentNode=currentNode.next;
         }
-        System.out.println();
+
+        currentNode = linked2;
+
+        while (currentNode!=null) {
+            second=second+currentNode.val;
+            currentNode=currentNode.next;
+        }
+        
+        Integer sum = Integer.parseInt(first) + Integer.parseInt(second);
+        String answer = new String(sum.toString());
         return null;
     }
 
