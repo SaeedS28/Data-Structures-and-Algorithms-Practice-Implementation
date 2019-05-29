@@ -11,19 +11,19 @@ public class ReverseSumLinkedList {
 
     public static void main(String[] args) {
         ReverseSumLinkedList ro1 = new ReverseSumLinkedList();
-        ReverseSumLinkedList.ListNode linked1 = ro1.new ListNode(12); // instantiating an inner class object
-        linked1.appendToTail(21);
-        linked1.appendToTail(32);
+        ReverseSumLinkedList.ListNode linked1 = ro1.new ListNode(2); // instantiating an inner class object
+        linked1.appendToTail(4);
+        linked1.appendToTail(3);
 
-        ReverseSumLinkedList.ListNode linked2 = ro1.new ListNode(15);
-        linked2.appendToTail(1321);
-        linked2.appendToTail(45);
+        ReverseSumLinkedList.ListNode linked2 = ro1.new ListNode(5);
+        linked2.appendToTail(6);
+        linked2.appendToTail(4);
 
-        //System.out.println(linked1.toString());
-        //System.out.println(linked2.toString());
+        System.out.println(linked1.toString());
+        System.out.println(linked2.toString());
 
-        ro1.addTwoNumbers(linked1, linked2);
-        System.out.println("no infinite recursion");
+        ReverseSumLinkedList.ListNode linked3=ro1.addTwoNumbers(linked1, linked2);
+        System.out.println(linked3.toString());
     }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
@@ -31,7 +31,6 @@ public class ReverseSumLinkedList {
         ListNode linked1= new ListNode(l1.val);
         ListNode linked2= new ListNode(l2.val);
         ListNode currentNode=l1.next;
-
         ListNode now;
 
         //these loops reverse both lists
@@ -69,8 +68,13 @@ public class ReverseSumLinkedList {
         }
         
         Integer sum = Integer.parseInt(first) + Integer.parseInt(second);
-        String answer = new String(sum.toString());
-        return null;
+        char[] array = new String(sum.toString()).toCharArray();
+        
+        ListNode sumReversed = new ListNode(Character.getNumericValue(array[array.length-1]));    
+        for (int i = array.length-2; i >= 0; i--) {
+            sumReversed.appendToTail(Character.getNumericValue(array[i]));
+        }
+        return sumReversed;
     }
 
     public class ListNode {
