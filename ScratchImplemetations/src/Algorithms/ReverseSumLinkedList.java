@@ -19,14 +19,51 @@ public class ReverseSumLinkedList {
         linked2.appendToTail(1321);
         linked2.appendToTail(45);
 
-        System.out.println(linked1.toString());
-        System.out.println(linked2.toString());
+        //System.out.println(linked1.toString());
+        //System.out.println(linked2.toString());
 
-
+        ro1.addTwoNumbers(linked1, linked2);
+        System.out.println("no infinite recursion");
     }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        
+        //ReverseSumLinkedList temp = new ReverseSumLinkedList();
+        ListNode linked1= new ListNode(l1.val);
+        ListNode linked2= new ListNode(l2.val);
+        ListNode currentNode=l1.next;
+
+        ListNode now;
+
+        //these loops reverse both lists
+        while (currentNode!=null) {
+            now=new ListNode(currentNode.val);
+            now.next=linked1;
+            linked1=now;
+            currentNode=currentNode.next;
+        }
+        currentNode=linked1;
+
+        now=null;
+        while (currentNode!=null) {
+            System.out.print(currentNode.val+" ");
+            currentNode=currentNode.next;
+        }
+        System.out.println();
+
+        currentNode=l2.next;
+        while (currentNode!=null) {
+            now=new ListNode(currentNode.val);
+            now.next=linked2;
+            linked2=now;
+            currentNode=currentNode.next;
+        }
+
+        currentNode=linked2;
+        while (currentNode!=null) {
+            System.out.print(currentNode.val+" ");
+            currentNode=currentNode.next;
+        }
+        System.out.println();
         return null;
     }
 
