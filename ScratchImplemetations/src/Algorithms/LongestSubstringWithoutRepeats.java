@@ -38,8 +38,8 @@ public class LongestSubstringWithoutRepeats {
                     break;
                 } else{
                     set.add(s.charAt(j));
+                    j++;
                 }
-                j++;
             }
             if (longestCount < j-i) {
                 longestCount = j-i;
