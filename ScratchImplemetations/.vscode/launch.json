@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - maximumSumSubarray",
+            "request": "launch",
+            "mainClass": "Algorithms.maximumSumSubarray",
+            "projectName": "ScratchImplemetations"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - BracketsBalanced",
             "request": "launch",
             "mainClass": "Algorithms.BracketsBalanced",
