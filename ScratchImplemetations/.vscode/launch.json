@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - BracketsBalanced",
+            "request": "launch",
+            "mainClass": "Algorithms.BracketsBalanced",
+            "projectName": "ScratchImplemetations"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - ReverseSumLinkedList",
             "request": "launch",
             "mainClass": "Algorithms.ReverseSumLinkedList",
