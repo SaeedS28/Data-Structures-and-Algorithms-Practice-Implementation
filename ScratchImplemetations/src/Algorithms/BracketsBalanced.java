@@ -7,8 +7,11 @@ import DS.StackAndQueue.ArrayedStack;   // My own implementation
 public class BracketsBalanced {
 
     public static void main(String[] args) {
-        String str1 = "{[Saad]][[(({";
-        isBalanced(str1);
+        String str1 = "{Saad}";
+        System.out.println(isBalanced(str1));
+        System.out.println(isBalanced("{}{}()[]"));
+        System.out.println(isBalanced("{Saad}{Saeed}(is)[weird]"));
+        System.out.println(isBalanced("mismatch right here []{]"));
     }
 
     public static boolean isBalanced(String str) {
@@ -28,14 +31,29 @@ public class BracketsBalanced {
         for (int i = 0; i < stc.length; i++) {
 
             // pushes an opening bracket into the stack
-            int iter = open.indexOf(stc[i]);
-            if(iter != -1){
+            int opener = open.indexOf(stc[i]);
+            int closer = close.indexOf(stc[i]);
+            if(opener != -1){
                 container.push(stc[i]);
             }
+            else if (closer != -1) {
+                // closing bracket encountered but nothing in the stack
+                if(container.isEmpty()){
+                    System.out.println("Empty container");
+                    return false;
+                }
+                char popped = container.pop();
+                
+                // mismatch
+                if (open.indexOf(popped) != closer) {
+                    return false;
+                }
+            }
+        }
+        if (!container.isEmpty()) {
+            return false;
         }
 
-        System.out.println(container.toString());
-
-        return false;
+        return true;
     }
 }
