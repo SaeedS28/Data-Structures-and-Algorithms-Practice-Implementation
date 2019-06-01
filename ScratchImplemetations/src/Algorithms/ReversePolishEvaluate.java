@@ -15,7 +15,17 @@ public class ReversePolishEvaluate {
         exp1.add("5");
         exp1.add("/");
         exp1.add("+");
-        evaluate(exp1);
+        //evaluate(exp1);
+
+        LinkedList<String> exp2= new LinkedList<>();
+        // ["2", "1", "+", "3", "*"]
+        exp2.add("2");
+        exp2.add("1");
+        exp2.add("+");
+        exp2.add("3");
+        exp2.add("*");
+        evaluate(exp2);
+        
     }
 
     public static int evaluate(LinkedList<String> expression){
