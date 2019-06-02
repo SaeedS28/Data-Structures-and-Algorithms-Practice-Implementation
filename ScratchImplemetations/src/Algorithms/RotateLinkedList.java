@@ -13,10 +13,43 @@ public class RotateLinkedList {
         list.appendToTail(5);
 
         System.out.println(list.toString());
+        
+        RotateLinkedList ro = new RotateLinkedList();
+        ro.rotateRight(list, 3);
+
     }
 
     public ListNode rotateRight(ListNode head, int k) {
-        return null;    
+        int size=0;
+        ListNode current = head;
+
+        while (current != null) {
+            size++;
+            current=current.next;
+        }
+
+        current=head;
+
+        int now, next;
+
+        for (int i = 0; i < k; i++) {
+            now = current.val;
+            while (true) {
+                current = current.next;
+                if(current==null){
+                    break;
+                }
+                next = current.val;
+                current.val=now;
+                now = next;
+            }
+            current=head;
+            next = current.val;
+            current.val = now;
+            now = next;
+        }
+        System.out.println(head.toString());
+        return null;
     }
 
     public class ListNode {
