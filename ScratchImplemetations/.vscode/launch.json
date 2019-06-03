@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - MaskingInformation",
+            "request": "launch",
+            "mainClass": "Algorithms.MaskingInformation",
+            "projectName": "ScratchImplemetations"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - RotateLinkedList",
             "request": "launch",
             "mainClass": "Algorithms.RotateLinkedList",
