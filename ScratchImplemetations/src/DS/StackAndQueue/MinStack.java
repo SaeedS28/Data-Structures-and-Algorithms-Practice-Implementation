@@ -3,9 +3,9 @@ import DS.LinkedList.*;
 /**
  * MinStack
  */
-public class MinStack<T> {
+public class MinStack {
     public static void main(String[] args) {
-        MinStack<Integer> stack = new MinStack<>();
+        MinStack stack = new MinStack();
         stack.push(5);
         stack.push(45);
         stack.push(9);
@@ -14,11 +14,13 @@ public class MinStack<T> {
         System.out.println(stack.toString()+"\tLength: "+stack.size());
 
         System.out.println(stack.peek());
-        System.out.println(stack.pop());
+        stack.pop();
+        stack.push(4);
+        stack.push(88);
         System.out.println(stack.toString()+"\tLength: "+stack.size());
     }
 
-    private DoubleLinkedList<T> stack;
+    private DoubleLinkedList<Integer> stack;
 
     public MinStack() {
         stack = new DoubleLinkedList<>();
@@ -32,11 +34,24 @@ public class MinStack<T> {
         return stack.length() == 0;
     }
 
-    public void push(T element) {
-        stack.addFirst(element);
+    public void push(Integer element) {
+        if (stack.length()==0) {
+            stack.addFirst(element);
+        } else {
+            DoubleLinkedList<Integer> tempStack = new DoubleLinkedList<>();
+
+            while (stack.length() !=0 && stack.element(0) < element) {
+                tempStack.addFirst(stack.remove(0));
+            }
+            stack.addFirst(element);
+
+            while (tempStack.length() != 0) {
+                stack.addFirst(tempStack.remove(0));
+            }
+        }
     }
 
-    public T pop(){
+    public Integer pop(){
         if (stack.length() > 0) {
             return stack.remove(0);
         }
@@ -47,7 +62,7 @@ public class MinStack<T> {
         return stack.toString();
     }
 
-    public T peek() {
+    public Integer peek() {
         return stack.element(0);
     }
 }
