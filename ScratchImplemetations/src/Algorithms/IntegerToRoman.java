@@ -7,10 +7,15 @@ package Algorithms;
 public class IntegerToRoman {
 
     public static void main(String[] args) {
-        
+        System.out.println(convertMe(14));
+        System.out.println(convertMe(999));
+        System.out.println(convertMe(1001));
+        System.out.println(convertMe(42));
+        System.out.println(convertMe(423));
+        System.out.println(convertMe(98));
     }
 
-    public String convertMe(int s) {
+    public static String convertMe(int s) {
         StringBuilder romanNumeral = new StringBuilder();
         
         while (s>0) {

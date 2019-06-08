@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - IntegerToRoman",
+            "request": "launch",
+            "mainClass": "Algorithms.IntegerToRoman",
+            "projectName": "ScratchImplemetations"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - MinStack",
             "request": "launch",
             "mainClass": "DS.StackAndQueue.MinStack",
