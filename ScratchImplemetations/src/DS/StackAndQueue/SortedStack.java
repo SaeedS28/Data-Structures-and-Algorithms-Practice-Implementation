@@ -1,11 +1,11 @@
 package DS.StackAndQueue;
 import DS.LinkedList.*;
 /**
- * MinStack
+ * SortedStack
  */
-public class MinStack {
+public class SortedStack {
     public static void main(String[] args) {
-        MinStack stack = new MinStack();
+        SortedStack stack = new SortedStack();
         stack.push(5);
         stack.push(45);
         stack.push(9);
@@ -22,7 +22,7 @@ public class MinStack {
 
     private DoubleLinkedList<Integer> stack;
 
-    public MinStack() {
+    public SortedStack() {
         stack = new DoubleLinkedList<>();
     }
 
@@ -64,5 +64,9 @@ public class MinStack {
 
     public Integer peek() {
         return stack.element(0);
+    }
+
+    protected DoubleLinkedList<Integer> returnStack() {
+        return this.stack;
     }
 }
