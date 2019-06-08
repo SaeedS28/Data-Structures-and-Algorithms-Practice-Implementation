@@ -5,7 +5,7 @@ import DS.LinkedList.DoubleLinkedList;
 /**
  * MinStack
  */
-public class MinStack extends SortedStack {
+public class MinStack extends AbstractStack {
 
     public static void main(String[] args) {
         MinStack stack = new MinStack();

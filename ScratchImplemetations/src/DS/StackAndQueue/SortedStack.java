@@ -3,7 +3,7 @@ import DS.LinkedList.*;
 /**
  * SortedStack
  */
-public class SortedStack {
+public class SortedStack extends AbstractStack {
     public static void main(String[] args) {
         SortedStack stack = new SortedStack();
         stack.push(5);
@@ -23,15 +23,8 @@ public class SortedStack {
     private DoubleLinkedList<Integer> stack;
 
     public SortedStack() {
-        stack = new DoubleLinkedList<>();
-    }
-
-    public int size(){
-        return stack.length();
-    }
-
-    public boolean isEmpty() {
-        return stack.length() == 0;
+        super();
+        stack = returnStack();
     }
 
     public void push(Integer element) {
@@ -50,23 +43,5 @@ public class SortedStack {
             }
         }
     }
-
-    public Integer pop(){
-        if (stack.length() > 0) {
-            return stack.remove(0);
-        }
-        return null;
-    }
-
-    public String toString() {
-        return stack.toString();
-    }
-
-    public Integer peek() {
-        return stack.element(0);
-    }
-
-    protected DoubleLinkedList<Integer> returnStack() {
-        return this.stack;
-    }
+    
 }
