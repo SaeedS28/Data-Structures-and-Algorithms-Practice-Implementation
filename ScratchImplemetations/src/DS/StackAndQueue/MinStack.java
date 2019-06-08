@@ -8,7 +8,19 @@ import DS.LinkedList.DoubleLinkedList;
 public class MinStack extends SortedStack {
 
     public static void main(String[] args) {
-        
+        MinStack stack = new MinStack();
+        stack.push(5);
+        stack.push(45);
+        stack.push(9);
+        stack.push(3);
+        stack.push(2);
+        System.out.println(stack.toString()+"\tLength: "+stack.size());
+
+        System.out.println(stack.peek());
+        stack.pop();
+        stack.push(4);
+        stack.push(88);
+        System.out.println(stack.toString()+"\tLength: "+stack.size());
     }
     
     private DoubleLinkedList<Integer> minVals;
@@ -51,7 +63,7 @@ public class MinStack extends SortedStack {
         toStr.append(super.toString());
 
         if (minVals.length() > 0) {
-            toStr.append("\t\tMinimum value: "+minVals.element(0));
+            toStr.append("    Minimum values: "+minVals.element(0));
         }
         return toStr.toString();
     }
