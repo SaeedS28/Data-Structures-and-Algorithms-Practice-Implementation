@@ -38,4 +38,25 @@ public class QueueUsingStack {
     public boolean isEmpty() {
         return mainStack.isEmpty();
     }
+
+    // Very inefficient but justified given the constraints
+    public String toString() {
+        while (!mainStack.isEmpty()) {
+            auxStack.push(mainStack.pop());
+        }
+        StringBuilder sb = new StringBuilder();
+        if (!auxStack.isEmpty()) {
+            int first = auxStack.pop();
+            mainStack.push(first);
+
+            sb.append(first);
+
+            while (!auxStack.isEmpty()) {
+                first = auxStack.pop();
+                mainStack.push(first);
+                sb.append(" <-"+first);
+            }
+        }
+        return sb.toString();
+    }
 }
