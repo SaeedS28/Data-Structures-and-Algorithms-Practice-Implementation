@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - LinkedStack",
+            "request": "launch",
+            "mainClass": "DS.StackAndQueue.LinkedStack",
+            "projectName": "ScratchImplemetations"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - SortedStack",
             "request": "launch",
             "mainClass": "DS.StackAndQueue.SortedStack",
