@@ -6,7 +6,19 @@ package DS.StackAndQueue;
  */
 public class QueueUsingStack {
     public static void main(String[] args) {
+        QueueUsingStack test = new QueueUsingStack();
         
+        test.enqueue(4);
+        test.enqueue(32);
+        test.enqueue(456);
+        System.out.println(test.toString());
+
+        System.out.println("Dequeued element: "+ test.dequeue());
+        System.out.println(test.toString());
+        System.out.println("Dequeued element: "+ test.dequeue());
+        System.out.println(test.toString());
+        test.enqueue(45);
+        System.out.println(test.toString());
     }
     
     private LinkedStack mainStack;
@@ -54,7 +66,7 @@ public class QueueUsingStack {
             while (!auxStack.isEmpty()) {
                 first = auxStack.pop();
                 mainStack.push(first);
-                sb.append(" <-"+first);
+                sb.append(" <- "+first);
             }
         }
         return sb.toString();
