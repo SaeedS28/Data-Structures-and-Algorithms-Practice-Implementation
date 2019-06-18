@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - BFS",
+            "request": "launch",
+            "mainClass": "DS.Graphs.BFS",
+            "projectName": "ScratchImplemetations"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - QueueUsingStack",
             "request": "launch",
             "mainClass": "DS.StackAndQueue.QueueUsingStack",
