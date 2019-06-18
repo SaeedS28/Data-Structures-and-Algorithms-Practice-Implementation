@@ -1,6 +1,7 @@
 package DS.Graphs;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Node
@@ -24,8 +25,12 @@ public class Node <T> {
         return this.data;
     }
 
-    public void addChild(Node<T> node) {
+    public void addNeighbours(Node<T> node) {
         neighbours.add(node);
+    }
+
+    public Iterator<Node<T>> iterate(){
+        return neighbours.iterator();
     }
 
     public void setIsVisited(boolean bln) {
