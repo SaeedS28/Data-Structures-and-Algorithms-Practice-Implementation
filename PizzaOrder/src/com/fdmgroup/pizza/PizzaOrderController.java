@@ -79,7 +79,7 @@ public class PizzaOrderController {
 		
 		if(pizza!=null) {
 			System.out.println("\nFinal Order Details: " + pizza.getDescription() + "\nPrice: " + pizza.getPrice()+"\n");
-			System.out.println("Would you like to save this order? [y/n]: ");
+			System.out.print("Would you like to save this order? [y/n]: ");
 			char save = scan.next().toLowerCase().charAt(0);
 			
 			if(save == 'y') {
@@ -102,7 +102,15 @@ public class PizzaOrderController {
 	}
 
 	void savePizzaOrder() {
-
+		try {
+			BufferedWriter bfw = new BufferedWriter(new FileWriter("completeOrder.txt",false));
+			System.out.println(pizza.getDescription());
+			bfw.write(pizza.getDescription());
+			bfw.close();
+			System.out.println("Pizza Order saved successfully");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	void orderFromSavePoint() {
@@ -145,6 +153,6 @@ public class PizzaOrderController {
 	}
 
 	void reorderLast() {
-
+		
 	}
 }
