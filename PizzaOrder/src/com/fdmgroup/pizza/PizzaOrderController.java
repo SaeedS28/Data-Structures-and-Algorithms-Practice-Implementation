@@ -41,7 +41,6 @@ public class PizzaOrderController {
 			} else if (choice == 6) {
 				topping = "pineapple";
 			} else if (choice == 7) {
-				pizza = new PlainPizza();
 				orderFromSavePoint();
 				if (chk == 1) {
 					chk = 0;
@@ -50,8 +49,8 @@ public class PizzaOrderController {
 					if (finish == 'y') {
 						break;
 					}
-					continue;
 				}
+				continue;
 			} else if (choice == 8) {
 				
 			} else {
@@ -61,22 +60,42 @@ public class PizzaOrderController {
 				pizza = new PlainPizza();
 			}
 			pizza = PizzaFactory.createPizza(topping, pizza);
+			System.out.println("Current Order details: " + pizza.getDescription() + "\nPrice: " + pizza.getPrice()+"\n");
+			
+			System.out.println("Would you like to create a savepoint? [y/n]: ");
+			char save = scan.next().toLowerCase().charAt(0);
+			if (save == 'y') {
+				createPizzaSavePoint();
+				System.out.println("Savepoint created");
+			}
+			
+			System.out.print("Finish ordering? [y/n]: ");
+			char finish = scan.next().toLowerCase().charAt(0);
+			if (finish == 'y') {
+				break;
+			}
+			
 		} while (true);
 		
 		if(pizza!=null) {
-			System.out.println("\nOrder Details: " + pizza.getDescription() + "\nPrice: " + pizza.getPrice());
-			// save completed order goes here
+			System.out.println("\nFinal Order Details: " + pizza.getDescription() + "\nPrice: " + pizza.getPrice()+"\n");
+			System.out.println("Would you like to save this order? [y/n]: ");
+			char save = scan.next().toLowerCase().charAt(0);
+			
+			if(save == 'y') {
+				savePizzaOrder();
+			}
 		}else {
 			System.out.println("Nothing was ordered");
 		}
-
 	}
 
 	void createPizzaSavePoint() {
 		try {
-			@SuppressWarnings("resource")
-			BufferedWriter bfw = new BufferedWriter(new FileWriter("incompleteOrder.txt",false));
+			BufferedWriter bfw = new BufferedWriter(new FileWriter("incompleteOrders.txt",false));
+			System.out.println(pizza.getDescription());
 			bfw.write(pizza.getDescription());
+			bfw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -94,7 +113,11 @@ public class PizzaOrderController {
 			bfr = new BufferedReader(new FileReader(incomplete));
 			if (incomplete.length() <= 0) {
 				System.out.println("No incomplete orders exist, try again\n");
+				chk=0;
 				return;
+			}
+			if(pizza==null) {
+				pizza=new PlainPizza();
 			}
 			String lineOrder;
 			while ((lineOrder = bfr.readLine()) != null) {
