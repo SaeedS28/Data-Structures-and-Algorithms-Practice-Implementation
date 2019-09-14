@@ -1,16 +1,18 @@
 package com.fdmgroup.pizza;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class PizzaOrderController {
 	Scanner scan = new Scanner(System.in);
 	int choice;
-	Pizza pizza = new PlainPizza();
+	Pizza pizza = null;
 	int chk = 0;
 
 	void orderNewPizza() throws IOException {
@@ -21,7 +23,7 @@ public class PizzaOrderController {
 			System.out.print("1. " + PizzaTopping.CHEESE + "\n2. " + PizzaTopping.CHICKEN + "\n3. "
 					+ PizzaTopping.GREEN_PEPPER + "\n4. " + PizzaTopping.PEPPERONI + "\n5. " + PizzaTopping.MUSHROOM
 					+ "\n6. " + PizzaTopping.PINEAPPLE + "\n\nAlternatively, please choose the following options"
-					+ "\n7. Load a savepoint" + "\n8. Order the last choice" + "\n9. Bail out" + "\nMake a choice: ");
+					+ "\n7. Load a savepoint" + "\n8. Order the last choice" + "\n9. Quit" + "\nMake a choice: ");
 			choice = scan.nextInt();
 			System.out.println();
 			String topping = "";
@@ -39,6 +41,7 @@ public class PizzaOrderController {
 			} else if (choice == 6) {
 				topping = "pineapple";
 			} else if (choice == 7) {
+				pizza = new PlainPizza();
 				orderFromSavePoint();
 				if (chk == 1) {
 					chk = 0;
@@ -49,20 +52,34 @@ public class PizzaOrderController {
 					}
 					continue;
 				}
-
 			} else if (choice == 8) {
-
+				
 			} else {
 				break;
 			}
+			if(pizza==null) {
+				pizza = new PlainPizza();
+			}
 			pizza = PizzaFactory.createPizza(topping, pizza);
 		} while (true);
-		System.out.println("\nOrder Details: " + pizza.getDescription() + "\nPrice: " + pizza.getPrice() + "\nEnjoy!");
+		
+		if(pizza!=null) {
+			System.out.println("\nOrder Details: " + pizza.getDescription() + "\nPrice: " + pizza.getPrice());
+			// save completed order goes here
+		}else {
+			System.out.println("Nothing was ordered");
+		}
 
 	}
 
 	void createPizzaSavePoint() {
-
+		try {
+			@SuppressWarnings("resource")
+			BufferedWriter bfw = new BufferedWriter(new FileWriter("incompleteOrder.txt",false));
+			bfw.write(pizza.getDescription());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	void savePizzaOrder() {
