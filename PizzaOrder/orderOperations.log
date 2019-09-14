@@ -1,4 +1,4 @@
-2019-09-14 19:04:05,458 - Order retrieved from last savepoint. Pizza description: dough, SAUUUUUCCCEEE, chicken, cheese   Price: 77.19
-2019-09-14 19:04:44,531 - Order saved as complete. Pizza description: dough, SAUUUUUCCCEEE, chicken, cheese   Price: 77.19
-2019-09-14 19:11:24,208 - No pizza ordered
-2019-09-14 19:12:41,958 - Ordered the last completed order. Pizza description: dough, SAUUUUUCCCEEE, chicken, cheese   Price: 77.19
+2019-09-14 19:39:06,623 - Savepoint created.
+2019-09-14 19:40:17,429 - Order saved as complete.
+2019-09-14 19:47:59,114 - Savepoint created.
+2019-09-14 19:48:06,804 - Order completed but not saved.

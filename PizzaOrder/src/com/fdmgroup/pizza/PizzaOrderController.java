@@ -107,7 +107,7 @@ public class PizzaOrderController {
 	private void createPizzaSavePoint() {
 		try {
 			BufferedWriter bfw = new BufferedWriter(new FileWriter("incompleteOrders.txt",false));
-			System.out.println(pizza.getDescription());
+			bfw.write(pizza.getDescription());
 			bfw.close();
 			orderLog.info("Savepoint created.");
 		} catch (IOException e) {
@@ -136,6 +136,7 @@ public class PizzaOrderController {
 			if (incomplete.length() <= 0) {
 				System.out.println("No incomplete orders exist, try again\n");
 				chk=0;
+				orderLog.info("Tried to restore an incomplete order, but none existed");
 				return;
 			}
 			if(pizza==null) {
@@ -177,6 +178,7 @@ public class PizzaOrderController {
 			if (complete.length() <= 0) {
 				System.out.println("No completed orders exist, try again\n");
 				restore=1;
+				orderLog.info("Tried to order the last complete order, but none existed");
 				return;
 			}
 			if(pizza==null) {

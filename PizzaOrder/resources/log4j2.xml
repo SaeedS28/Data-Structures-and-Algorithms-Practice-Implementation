@@ -1,34 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
-  <Appenders>
-  
-    <Console name="StdOut" target="SYSTEM_OUT">
-      <PatternLayout pattern="%logger - %msg%n" />
-    </Console>
-    
-<!--     <File name="FileAppender" filename="H://pokemon.html"> -->
-<!--        <HTMLLayout charset="UTF-8" title="Pokemon Log" /> -->
-<!--     </File> -->
-    
-    <File name="FileAppender2" filename="orderOperations.log">
-      <PatternLayout pattern="%d - %msg%n" />
-    </File>
-  </Appenders>
-  
-  <Loggers>
-  
-    <Root level="error">
-      <AppenderRef ref="StdOut" />
-    </Root>
-    
-    <Logger name="orderLog" level="info" additivity="false">
-      <AppenderRef ref="FileAppender2" />
-    </Logger>
-    
-<!--     <Logger name="Arthur" level="info" additivity="false"> -->
-<!--       <AppenderRef ref="FileAppender" /> -->
-<!--       <AppenderRef ref="FileAppender2" /> -->
-<!--     </Logger> -->
-    
-  </Loggers>
+	<Appenders>
+
+		<Console name="StdOut" target="SYSTEM_OUT">
+			<PatternLayout pattern="%logger - %msg%n" />
+		</Console>
+
+		<!-- <File name="FileAppender" filename="H://pokemon.html"> -->
+		<!-- <HTMLLayout charset="UTF-8" title="Pokemon Log" /> -->
+		<!-- </File> -->
+
+		<File name="FileAppender1" filename="orderhistory.txt">
+			<PatternLayout pattern="%d - %msg%n" />
+		</File>
+
+		<File name="FileAppender2" filename="orderOperations.log">
+			<PatternLayout pattern="%d - %msg%n" />
+		</File>
+		
+	</Appenders>
+
+	<Loggers>
+
+		<Root level="error">
+			<AppenderRef ref="StdOut" />
+		</Root>
+
+		<Logger name="orderHistory" level="info" additivity="false">
+			<AppenderRef ref="FileAppender1" />
+		</Logger>
+		
+		<Logger name="orderLog" level="info" additivity="false">
+			<AppenderRef ref="FileAppender2" />
+		</Logger>
+
+	</Loggers>
 </Configuration>
