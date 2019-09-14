@@ -14,11 +14,14 @@ public class PizzaOrderController {
 	int chk = 0;
 
 	void orderNewPizza() throws IOException {
+		System.out.println("Welcome to Saad's Pizzeria\n\n");
+		
 		do {
-			System.out.println("Order a pizza m8\n");
+			System.out.println("Please choose from the following toppings");
 			System.out.print("1. " + PizzaTopping.CHEESE + "\n2. " + PizzaTopping.CHICKEN + "\n3. "
 					+ PizzaTopping.GREEN_PEPPER + "\n4. " + PizzaTopping.PEPPERONI + "\n5. " + PizzaTopping.MUSHROOM
-					+ "\n6. " + PizzaTopping.PINEAPPLE + "\n7. Load a savepoint" + "\n8. Order last choice"
+					+ "\n6. " + PizzaTopping.PINEAPPLE + "\n\nAlternatively, please choose the following options"
+							+ "\n7. Load a savepoint" + "\n8. Order last choice"
 					+ "\n9. Bail out" + "\nMake a choice: ");
 			choice = scan.nextInt();
 			System.out.println();

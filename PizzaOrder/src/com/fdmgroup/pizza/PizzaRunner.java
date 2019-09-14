@@ -6,7 +6,6 @@ public class PizzaRunner {
 
 	public static void main(String[] args) throws IOException {
 		PizzaOrderController poc = new PizzaOrderController();
-		
 		poc.orderNewPizza();
 	}
 
