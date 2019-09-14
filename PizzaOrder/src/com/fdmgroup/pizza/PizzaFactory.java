@@ -16,7 +16,7 @@ public class PizzaFactory {
 		case "greenpeppers":
 			pizza = new GreenPepperPizza(pizza);
 			break;
-		case "mushroom":
+		case "mushrooms":
 			pizza = new MushroomPizza(pizza);
 			break;
 		case "pepperoni":

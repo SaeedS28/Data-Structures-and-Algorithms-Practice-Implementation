@@ -14,12 +14,13 @@ public class PizzaOrderController {
 	int choice;
 	Pizza pizza = null;
 	int chk = 0;
-
+	int restore=-1;
+	
 	void orderNewPizza() throws IOException {
-		System.out.println("Welcome to Saad's Pizzeria\n");
+		System.out.println("Welcome to Saad's Pizzeria");
 
 		do {
-			System.out.println("Please choose from the following toppings");
+			System.out.println("\nPlease choose from the following toppings");
 			System.out.print("1. " + PizzaTopping.CHEESE + "\n2. " + PizzaTopping.CHICKEN + "\n3. "
 					+ PizzaTopping.GREEN_PEPPER + "\n4. " + PizzaTopping.PEPPERONI + "\n5. " + PizzaTopping.MUSHROOM
 					+ "\n6. " + PizzaTopping.PINEAPPLE + "\n\nAlternatively, please choose the following options"
@@ -52,7 +53,11 @@ public class PizzaOrderController {
 				}
 				continue;
 			} else if (choice == 8) {
-				
+				reorderLast();
+				if(restore==1) {
+					continue;
+				}
+				break;
 			} else {
 				break;
 			}
@@ -62,7 +67,7 @@ public class PizzaOrderController {
 			pizza = PizzaFactory.createPizza(topping, pizza);
 			System.out.println("Current Order details: " + pizza.getDescription() + "\nPrice: " + pizza.getPrice()+"\n");
 			
-			System.out.println("Would you like to create a savepoint? [y/n]: ");
+			System.out.print("Would you like to create a savepoint? [y/n]: ");
 			char save = scan.next().toLowerCase().charAt(0);
 			if (save == 'y') {
 				createPizzaSavePoint();
@@ -79,11 +84,14 @@ public class PizzaOrderController {
 		
 		if(pizza!=null) {
 			System.out.println("\nFinal Order Details: " + pizza.getDescription() + "\nPrice: " + pizza.getPrice()+"\n");
-			System.out.print("Would you like to save this order? [y/n]: ");
-			char save = scan.next().toLowerCase().charAt(0);
 			
-			if(save == 'y') {
-				savePizzaOrder();
+			if(restore==1 || restore ==-1) {
+				System.out.print("Would you like to save this order? [y/n]: ");
+				char save = scan.next().toLowerCase().charAt(0);
+				
+				if(save == 'y') {
+					savePizzaOrder();
+				}
 			}
 		}else {
 			System.out.println("Nothing was ordered");
@@ -94,7 +102,6 @@ public class PizzaOrderController {
 		try {
 			BufferedWriter bfw = new BufferedWriter(new FileWriter("incompleteOrders.txt",false));
 			System.out.println(pizza.getDescription());
-			bfw.write(pizza.getDescription());
 			bfw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -103,8 +110,7 @@ public class PizzaOrderController {
 
 	void savePizzaOrder() {
 		try {
-			BufferedWriter bfw = new BufferedWriter(new FileWriter("completeOrder.txt",false));
-			System.out.println(pizza.getDescription());
+			BufferedWriter bfw = new BufferedWriter(new FileWriter("completedOrder.txt",false));
 			bfw.write(pizza.getDescription());
 			bfw.close();
 			System.out.println("Pizza Order saved successfully");
@@ -153,6 +159,40 @@ public class PizzaOrderController {
 	}
 
 	void reorderLast() {
-		
+		File complete = new File("completedOrder.txt");
+		BufferedReader bfr = null;
+		String[] savedToppings = {};
+		try {
+			bfr = new BufferedReader(new FileReader(complete));
+			if (complete.length() <= 0) {
+				System.out.println("No completed orders exist, try again\n");
+				restore=1;
+				return;
+			}
+			if(pizza==null) {
+				pizza=new PlainPizza();
+			}
+			String lineOrder;
+			while ((lineOrder = bfr.readLine()) != null) {
+				savedToppings = lineOrder.split(", ");
+			}
+
+			for (int i = 2; i < savedToppings.length; i++) {
+				pizza = PizzaFactory.createPizza(savedToppings[i], pizza);
+			}
+			restore=0;
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (bfr != null) {
+				try {
+					bfr.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 }
