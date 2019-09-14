@@ -40,10 +40,10 @@ public class PizzaOrderController {
 			} else if (choice == 6) {
 				topping = "pineapple";
 			} else if (choice == 7) {
-				createPizzaSavePoint();
+				orderFromSavePoint();
 				continue;
 			} else if (choice == 8) {
-
+				
 			} else {
 				break;
 			}
@@ -52,8 +52,8 @@ public class PizzaOrderController {
 		} while (true);
 	}
 
-	void createPizzaSavePoint() throws IOException {
-
+	void createPizzaSavePoint() {
+		
 	}
 
 	void savePizzaOrder() {
@@ -61,7 +61,29 @@ public class PizzaOrderController {
 	}
 
 	void orderFromSavePoint() {
-
+		File incomplete = new File("incompleteOrders.txt");
+		BufferedReader bfr;
+		String[] savedToppings= {};
+		try {
+			 bfr= new BufferedReader(new FileReader(incomplete));
+			 if(incomplete.length()<=0) {
+				 System.out.println("No incomplete orders exist, try again\n");
+				 return;
+			 }
+			 String lineOrder;
+			 while((lineOrder=bfr.readLine())!=null) {
+				 savedToppings=lineOrder.split(", ");
+			 }
+			 
+			 for(int i =2;i<savedToppings.length;i++) {
+				 pizza=PizzaFactory.createPizza(savedToppings[i], pizza);
+			 }
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	void reorderLast() {
