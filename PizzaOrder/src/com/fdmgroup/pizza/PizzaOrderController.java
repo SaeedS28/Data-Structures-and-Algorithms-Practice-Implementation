@@ -18,8 +18,9 @@ public class PizzaOrderController {
 	private Pizza pizza = null;
 	private int chk = 0;
 	private int restore=-1;
-	private static Logger orderLog = LogManager.getLogger("orderLog");
-	private static Logger orderDetails = LogManager.getLogger("orderHistory");
+	private static Logger saveLogger = LogManager.getLogger("orderLog");
+	private static Logger orderLogger = LogManager.getLogger("orderHistory");
+	private static Logger errorLogger = LogManager.getLogger("errorLog");
 	
 	void orderNewPizza() throws IOException {
 		System.out.println("Welcome to Saad's Pizzeria");
@@ -88,7 +89,7 @@ public class PizzaOrderController {
 		
 		if(pizza!=null) {
 			System.out.println();
-			orderDetails.info("Final Order Details: " + pizza.getDescription() + ". Price: " + pizza.getPrice());
+			orderLogger.info("Final Order Details: " + pizza.getDescription() + ". Price: " + pizza.getPrice());
 			
 			if(restore==1 || restore ==-1) {
 				System.out.print("Would you like to save this order? [y/n]: ");
@@ -97,14 +98,16 @@ public class PizzaOrderController {
 				if(save == 'y') {
 					savePizzaOrder();
 				} else {
-					orderLog.info("Order completed but not saved.");
+					saveLogger.info("Order completed but not saved.");
 				}
 			}
 		}else {
 			System.out.println("Nothing was ordered");
-			orderLog.info("No pizza ordered");
-			orderDetails.info("Final Order Details: no order. 0.00");
+			saveLogger.info("No pizza ordered");
+			orderLogger.info("Final Order Details: no order. 0.00");
 		}
+		
+		System.out.println("\nEnd of program");
 	}
 
 	private void createPizzaSavePoint() {
@@ -112,8 +115,9 @@ public class PizzaOrderController {
 			BufferedWriter bfw = new BufferedWriter(new FileWriter("incompleteOrders.txt",false));
 			bfw.write(pizza.getDescription());
 			bfw.close();
-			orderLog.info("Savepoint created.");
+			saveLogger.info("Savepoint created.");
 		} catch (IOException e) {
+			errorLogger.error(e.toString());
 			e.printStackTrace();
 		}
 	}
@@ -124,8 +128,9 @@ public class PizzaOrderController {
 			bfw.write(pizza.getDescription());
 			bfw.close();
 			System.out.println("Pizza Order saved successfully");
-			orderLog.info("Order saved as complete.");
+			saveLogger.info("Order saved as complete.");
 		} catch (IOException e) {
+			errorLogger.error(e.toString());
 			e.printStackTrace();
 		}
 	}
@@ -139,7 +144,7 @@ public class PizzaOrderController {
 			if (incomplete.length() <= 0) {
 				System.out.println("No incomplete orders exist, try again\n");
 				chk=0;
-				orderLog.info("Tried to restore an incomplete order, but none existed");
+				saveLogger.info("Tried to restore an incomplete order, but none existed");
 				return;
 			}
 			if(pizza==null) {
@@ -154,17 +159,17 @@ public class PizzaOrderController {
 				pizza = PizzaFactory.createPizza(savedToppings[i], pizza);
 			}
 			
-			orderLog.info("Order retrieved from last savepoint.");
+			saveLogger.info("Order retrieved from last savepoint.");
 			chk = 1;
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
 		} catch (IOException e) {
+			errorLogger.error(e.toString());
 			e.printStackTrace();
 		} finally {
 			if (bfr != null) {
 				try {
 					bfr.close();
 				} catch (IOException e) {
+					errorLogger.error(e.toString());
 					e.printStackTrace();
 				}
 			}
@@ -181,7 +186,7 @@ public class PizzaOrderController {
 			if (complete.length() <= 0) {
 				System.out.println("No completed orders exist, try again\n");
 				restore=1;
-				orderLog.info("Tried to order the last complete order, but none existed");
+				saveLogger.info("Tried to order the last complete order, but none existed");
 				return;
 			}
 			if(pizza==null) {
@@ -196,16 +201,16 @@ public class PizzaOrderController {
 				pizza = PizzaFactory.createPizza(savedToppings[i], pizza);
 			}
 			restore=0;
-			orderLog.info("Ordered the last completed order.");
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			saveLogger.info("Ordered the last completed order.");
 		} catch (IOException e) {
+			errorLogger.error(e.toString());
 			e.printStackTrace();
 		} finally {
 			if (bfr != null) {
 				try {
 					bfr.close();
 				} catch (IOException e) {
+					errorLogger.error(e.toString());
 					e.printStackTrace();
 				}
 			}

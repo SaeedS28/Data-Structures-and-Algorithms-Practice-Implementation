@@ -1,0 +1,3 @@
+2019-09-14 20:25:59,300 - Final Order Details: dough, SAUUUUUCCCEEE, cheese, pepperoni. Price: 74.69
+2019-09-14 20:28:25,213 - Final Order Details: dough, SAUUUUUCCCEEE, cheese. Price: 71.69
+2019-09-14 20:31:57,945 - Final Order Details: dough, SAUUUUUCCCEEE, cheese, pineapple, chicken, pepperoni. Price: 85.69

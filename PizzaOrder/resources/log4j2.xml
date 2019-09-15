@@ -18,6 +18,10 @@
 			<PatternLayout pattern="%d - %msg%n" />
 		</File>
 		
+		<File name="FileAppender3" filename="PizzaOrderErrorLogs.log">
+			<PatternLayout pattern="%d - %msg%n" />
+		</File>
+		
 	</Appenders>
 
 	<Loggers>
@@ -32,6 +36,10 @@
 		
 		<Logger name="orderLog" level="info" additivity="false">
 			<AppenderRef ref="FileAppender2" />
+		</Logger>
+		
+		<Logger name="errorLog" level="error" additivity="false">
+			<AppenderRef ref="FileAppender3" />
 		</Logger>
 
 	</Loggers>
