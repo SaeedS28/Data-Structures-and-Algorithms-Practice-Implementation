@@ -26,7 +26,7 @@
 			<AppenderRef ref="StdOut" />
 		</Root>
 
-		<Logger name="orderHistory" level="info" additivity="false">
+		<Logger name="orderHistory" level="info">
 			<AppenderRef ref="FileAppender1" />
 		</Logger>
 		

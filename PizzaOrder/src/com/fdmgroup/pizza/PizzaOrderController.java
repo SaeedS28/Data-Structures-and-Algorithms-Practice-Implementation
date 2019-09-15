@@ -19,6 +19,7 @@ public class PizzaOrderController {
 	private int chk = 0;
 	private int restore=-1;
 	private static Logger orderLog = LogManager.getLogger("orderLog");
+	private static Logger orderDetails = LogManager.getLogger("orderHistory");
 	
 	void orderNewPizza() throws IOException {
 		System.out.println("Welcome to Saad's Pizzeria");
@@ -86,7 +87,8 @@ public class PizzaOrderController {
 		} while (true);
 		
 		if(pizza!=null) {
-			System.out.println("\nFinal Order Details: " + pizza.getDescription() + "\nPrice: " + pizza.getPrice()+"\n");
+			System.out.println();
+			orderDetails.info("Final Order Details: " + pizza.getDescription() + ". Price: " + pizza.getPrice());
 			
 			if(restore==1 || restore ==-1) {
 				System.out.print("Would you like to save this order? [y/n]: ");
@@ -101,6 +103,7 @@ public class PizzaOrderController {
 		}else {
 			System.out.println("Nothing was ordered");
 			orderLog.info("No pizza ordered");
+			orderDetails.info("Final Order Details: no order. 0.00");
 		}
 	}
 
